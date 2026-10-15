@@ -23,13 +23,15 @@ class MyApp extends StatelessWidget {
       final student = settings.arguments;
 
       if (name == Routes.student && student is Student) {
-        return MaterialPageRoute(
+        return MaterialPageRoute<void>(
           builder: (_) => DetailScreen(student: student),
         );
       }
 
       if (name == Routes.edit && student is Student) {
-        return MaterialPageRoute(builder: (_) => EditScreen(student: student));
+        return MaterialPageRoute<String>(
+          builder: (_) => EditScreen(student: student),
+        );
       }
 
       return null;
