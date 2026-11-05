@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'app_routes.dart';
 import 'models/cart.dart';
 
 class CartBadge extends StatelessWidget {
@@ -19,7 +20,7 @@ class CartBadge extends StatelessWidget {
         child: IconButton(
           icon: const Icon(Icons.shopping_cart),
           onPressed: () {
-            Navigator.of(context).pushNamed('/cart');
+            Navigator.pushNamed(context, AppRoutes.cart);
           },
         ),
       ),
