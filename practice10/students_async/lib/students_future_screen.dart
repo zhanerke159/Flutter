@@ -24,8 +24,6 @@ class _StudentsFutureScreenState extends State<StudentsFutureScreen> {
     _future = _api.fetchStudents();
   }
 
-  // _future is late but not final: Retry is the one place where a new
-  // Future is allowed, because the old one is already completed with an error.
   void _retry() {
     setState(() {
       _future = _api.fetchStudents();

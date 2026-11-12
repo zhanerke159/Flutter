@@ -40,6 +40,7 @@ class _CountdownScreenState extends State<CountdownScreen> {
   }
 }
 
+//StreamBuilder
 class _VersionA extends StatefulWidget {
   const _VersionA();
 
@@ -63,6 +64,8 @@ class _VersionAState extends State<_VersionA> {
     );
   }
 }
+
+//listen()
 
 class _VersionB extends StatefulWidget {
   const _VersionB();
