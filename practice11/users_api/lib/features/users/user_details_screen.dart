@@ -27,8 +27,16 @@ class UserDetailsScreen extends StatelessWidget {
             _buildRow('Name', user.name),
             _buildRow('Username', user.username),
             _buildRow('Email', user.email),
-            _buildRow('Phone', user.phone),
-            _buildRow('Website', user.website ?? 'Not available'),
+            _buildRow(
+              'Phone',
+              user.phone,
+              onTap: () {},
+            ), // Practice 12: url_launcher
+            _buildRow(
+              'Website',
+              user.website ?? 'Not available',
+              onTap: user.website == null ? null : () {}, // Practice 12
+            ),
           ]),
 
           _buildSection('Address', [
@@ -69,8 +77,8 @@ class UserDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRow(String label, String value) {
-    return Padding(
+  Widget _buildRow(String label, String value, {VoidCallback? onTap}) {
+    final row = Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,9 +90,21 @@ class UserDetailsScreen extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ),
-          Expanded(child: Text(value)),
+          Expanded(
+            child: Text(
+              value,
+              style: onTap == null
+                  ? null
+                  : const TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+            ),
+          ),
         ],
       ),
     );
+
+    return onTap == null ? row : InkWell(onTap: onTap, child: row);
   }
 }

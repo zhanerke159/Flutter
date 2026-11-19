@@ -24,6 +24,9 @@ class ApiClient {
       throw const NoConnectionException();
     } on TimeoutException {
       throw const NoConnectionException();
+    } on http.ClientException {
+      // web / some http versions wrap the socket failure in ClientException
+      throw const NoConnectionException();
     }
   }
 

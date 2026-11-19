@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -14,7 +16,11 @@ void main() {
 
   runApp(
     ChangeNotifierProvider(
-      create: (_) => UsersModel(repository)..load(),
+      create: (_) {
+        final model = UsersModel(repository);
+        unawaited(model.load());
+        return model;
+      },
       child: const MyApp(),
     ),
   );

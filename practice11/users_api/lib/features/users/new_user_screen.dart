@@ -140,7 +140,11 @@ class _NewUserScreenState extends State<NewUserScreen> {
                 child: ElevatedButton(
                   onPressed: model.saving ? null : _save,
                   child: model.saving
-                      ? const CircularProgressIndicator()
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
                       : const Text('Save'),
                 ),
               ),
